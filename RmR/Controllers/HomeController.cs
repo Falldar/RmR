@@ -20,7 +20,7 @@ namespace RmR.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Quicktools()
         {
             ViewBag.Message = "Your contact page.";
 
