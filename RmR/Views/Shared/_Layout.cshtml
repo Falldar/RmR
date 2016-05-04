@@ -19,7 +19,7 @@
     </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top"> @* navbar-inverse *@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,24 +27,36 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
+                <a href="@Html.ActionLink("Rage my Resume", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })"/>
+                    <img src="~/img/rmr.png" border="0" alt="Logo" style="position:fixed" />
+                </a>
+
+                @*<div class="thumbnail">
+                        <img src="~/DeptPics/@(item.DepartmentID).png" alt="@item.Name" />
+                        <div class="caption">
+                            <a href="@Url.Action(action,"Course", new { SelectedDepartment = item.DepartmentID })"><h4>@item.Name</h4></a>
+                        </div>
+                    </div>*@
+
                 @Html.ActionLink("Rate my Resume", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Quick Tools", "Quicktools", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Resumes", "Index", "Resume")</li>
+                    <li style="border-right: double">@Html.ActionLink("Resumes", "Index", "Resume")</li>
+                    <li>@Html.Partial("_LoginPartial")</li>
                 </ul>
-
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" id="BodyContainer">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Rate my Resume</p>
         </footer>
     </div>
 
