@@ -28,9 +28,11 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a href="@Html.ActionLink("Rage my Resume", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })"/>
-                    <img src="~/img/rmr.png" border="0" alt="Logo" style="position:fixed" />
-                </a>
+                @*<a href="@Html.Action("Index", "Home", new { area = "" })">
+                    <img src="~/img/rmr.png" border="0" alt="Logo"  style="position:static" />
+                </a>*@
+
+                <a href="@Url.Action("Index", "Home")"><img src="~/img/rmr.png" id="fpLogo"/></a>
 
                 @*<div class="thumbnail">
                         <img src="~/DeptPics/@(item.DepartmentID).png" alt="@item.Name" />
