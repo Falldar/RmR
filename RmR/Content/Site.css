@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#BodyContainer
+{
+    margin-left: 300px
+}
+
+
