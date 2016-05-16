@@ -199,6 +199,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\ResumeContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,19 +207,29 @@
     </Compile>
     <Compile Include="Helpers\FileResults.cs" />
     <Compile Include="Helpers\FileUploads.cs" />
-    <Compile Include="Migrations\CollegeMigrations\201605041718534_InitialCreate.cs" />
-    <Compile Include="Migrations\CollegeMigrations\201605041718534_InitialCreate.Designer.cs">
-      <DependentUpon>201605041718534_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\IdentityMigrations\201605120057301_InitialCreate.cs" />
+    <Compile Include="Migrations\IdentityMigrations\201605120057301_InitialCreate.Designer.cs">
+      <DependentUpon>201605120057301_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\CollegeMigrations\Configuration.cs" />
+    <Compile Include="Migrations\IdentityMigrations\Configuration.cs" />
+    <Compile Include="Migrations\ResumeMigrations\201605101755087_InitialCreate.cs" />
+    <Compile Include="Migrations\ResumeMigrations\201605101755087_InitialCreate.Designer.cs">
+      <DependentUpon>201605101755087_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ResumeMigrations\201605162312562_CompletedOn.cs" />
+    <Compile Include="Migrations\ResumeMigrations\201605162312562_CompletedOn.Designer.cs">
+      <DependentUpon>201605162312562_CompletedOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ResumeMigrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Expert.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Resume.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\ResumeExpertViewModel.cs" />
-    <Compile Include="ViewModels\ResumeUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -286,6 +297,12 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminPartial.cshtml" />
+    <Content Include="Views\Resume\Create.cshtml" />
+    <Content Include="Views\Resume\Delete.cshtml" />
+    <Content Include="Views\Resume\Details.cshtml" />
+    <Content Include="Views\Resume\Edit.cshtml" />
+    <Content Include="Views\Resume\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,8 +320,14 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\CollegeMigrations\201605041718534_InitialCreate.resx">
-      <DependentUpon>201605041718534_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\IdentityMigrations\201605120057301_InitialCreate.resx">
+      <DependentUpon>201605120057301_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ResumeMigrations\201605101755087_InitialCreate.resx">
+      <DependentUpon>201605101755087_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ResumeMigrations\201605162312562_CompletedOn.resx">
+      <DependentUpon>201605162312562_CompletedOn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

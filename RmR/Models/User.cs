@@ -12,7 +12,7 @@ namespace RmR.Models
         public int ID { get; set; }
         [Required]
         [StringLength(50)]
-        [Display(Name = "Full Name")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required]
         [StringLength(60)]
@@ -30,7 +30,7 @@ namespace RmR.Models
                 return LastName + ", " + FirstName;
             }
         }
-        public virtual ICollection<User> Users { get; set; }
+        //public virtual ICollection<Resume> Resumes { get; set; }
         
     }
 }

@@ -8,5 +8,8 @@ namespace RmR.Helpers
 {
     class FileResults
     {
+        public bool Success { get; set; }
+        public string FileName { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

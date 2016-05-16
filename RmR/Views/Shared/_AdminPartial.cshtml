@@ -1,0 +1,16 @@
+﻿@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("admin"))
+    {
+        <li>@Html.ActionLink("Resumes", "Index", "Resume")</li>
+        <li>@Html.ActionLink("Users","Index","User")</li>
+    }
+    else if (User.IsInRole("client"))
+    {
+        <li>@Html.ActionLink("Your Resumes", "Index", "Client")</li>
+    }
+    else if (User.IsInRole("expert"))
+    {
+        <li>@Html.ActionLink("List of Resumes", "Index", "Expert")</li>
+    }
+}

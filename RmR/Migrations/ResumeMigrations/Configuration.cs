@@ -1,4 +1,4 @@
-namespace RmR.Migrations.CollegeMigrations
+namespace RmR.Migrations.ResumeMigrations
 {
     using System;
     using System.Data.Entity;
@@ -10,7 +10,7 @@ namespace RmR.Migrations.CollegeMigrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            MigrationsDirectory = @"Migrations\CollegeMigrations";
+            MigrationsDirectory = @"Migrations\ResumeMigrations";
         }
 
         protected override void Seed(RmR.DAL.ResumeContext context)
