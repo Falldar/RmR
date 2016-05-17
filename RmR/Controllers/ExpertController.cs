@@ -18,7 +18,7 @@ namespace RmR.Controllers
         // GET: Expert
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(db.Experts.ToList());
         }
 
         // GET: Expert/Details/5
@@ -51,7 +51,7 @@ namespace RmR.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(expert);
+                db.Experts.Add(expert);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -111,7 +111,7 @@ namespace RmR.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Expert expert = db.Experts.Find(id);
-            db.Users.Remove(expert);
+            db.Experts.Remove(expert);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

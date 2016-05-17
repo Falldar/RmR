@@ -18,7 +18,7 @@ namespace RmR.Controllers
         // GET: Client
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(db.Clients.ToList());
         }
 
         // GET: Client/Details/5
@@ -51,7 +51,7 @@ namespace RmR.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(client);
+                db.Clients.Add(client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -111,7 +111,7 @@ namespace RmR.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Client client = db.Clients.Find(id);
-            db.Users.Remove(client);
+            db.Clients.Remove(client);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
