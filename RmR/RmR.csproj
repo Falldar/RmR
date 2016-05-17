@@ -327,9 +327,7 @@
     <Content Include="Views\Resume\Edit.cshtml" />
     <Content Include="Views\Resume\Index.cshtml" />
     <Content Include="Views\ClientResume\Create.cshtml" />
-    <Content Include="Views\ClientResume\Delete.cshtml" />
     <Content Include="Views\ClientResume\Details.cshtml" />
-    <Content Include="Views\ClientResume\Edit.cshtml" />
     <Content Include="Views\ClientResume\Index.cshtml" />
     <Content Include="Views\ExpertResume\Details.cshtml" />
     <Content Include="Views\ExpertResume\Edit.cshtml" />

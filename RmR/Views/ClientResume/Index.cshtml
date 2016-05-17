@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ResumeName)
@@ -23,16 +23,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ResumeName)
+            <strong>@Html.ActionLink(item.ResumeName, "Details", new { id = item.ResumeID })</strong>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreatedOn)
@@ -41,15 +37,20 @@
             @Html.DisplayFor(modelItem => item.CompletedOn)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ResumeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ResumeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ResumeID })
+            @switch ((int)item.Status)
+            {
+                case (0):
+                    @Html.ActionLink("Submitted", "Edit", new { id = item.ResumeID }, new { @class = "btn btn-default disabled" })
+                    break;
+                case (1):
+                    @Html.ActionLink("On Review", "Edit", new { id = item.ResumeID }, new { @class = "btn btn-default disabled" })
+                    break;
+                case (2):
+                    @Html.ActionLink("Completed", "Edit", new { id = item.ResumeID }, new { @class = "btn btn-default disabled" })
+                    break;
+                default:
+                    break;
+            }
         </td>
     </tr>
 }
