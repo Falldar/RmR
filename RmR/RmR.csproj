@@ -228,6 +228,14 @@
     <Compile Include="Migrations\ResumeMigrations\201605162333389_ResumeName.Designer.cs">
       <DependentUpon>201605162333389_ResumeName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ResumeMigrations\201605170127213_NullsOnDateResume.cs" />
+    <Compile Include="Migrations\ResumeMigrations\201605170127213_NullsOnDateResume.Designer.cs">
+      <DependentUpon>201605170127213_NullsOnDateResume.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ResumeMigrations\201605170131065_NullsOnDateResume2.cs" />
+    <Compile Include="Migrations\ResumeMigrations\201605170131065_NullsOnDateResume2.Designer.cs">
+      <DependentUpon>201605170131065_NullsOnDateResume2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ResumeMigrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs" />
@@ -357,6 +365,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ResumeMigrations\201605162333389_ResumeName.resx">
       <DependentUpon>201605162333389_ResumeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ResumeMigrations\201605170127213_NullsOnDateResume.resx">
+      <DependentUpon>201605170127213_NullsOnDateResume.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ResumeMigrations\201605170131065_NullsOnDateResume2.resx">
+      <DependentUpon>201605170131065_NullsOnDateResume2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
