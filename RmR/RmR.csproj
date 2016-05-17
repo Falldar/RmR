@@ -197,9 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\ClientResumeController.cs" />
-    <Compile Include="Controllers\ExpertController.cs" />
     <Compile Include="Controllers\ExpertResumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -323,14 +321,6 @@
     <Content Include="Views\Resume\Details.cshtml" />
     <Content Include="Views\Resume\Edit.cshtml" />
     <Content Include="Views\Resume\Index.cshtml" />
-    <Content Include="Views\Expert\Create.cshtml" />
-    <Content Include="Views\Expert\Delete.cshtml" />
-    <Content Include="Views\Expert\Details.cshtml" />
-    <Content Include="Views\Expert\Edit.cshtml" />
-    <Content Include="Views\Expert\Index.cshtml" />
-    <Content Include="Views\Client\Create.cshtml" />
-    <Content Include="Views\Client\Details.cshtml" />
-    <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\ClientResume\Create.cshtml" />
     <Content Include="Views\ClientResume\Delete.cshtml" />
     <Content Include="Views\ClientResume\Details.cshtml" />
