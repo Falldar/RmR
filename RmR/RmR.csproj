@@ -315,9 +315,7 @@
     <Content Include="Views\Expert\Edit.cshtml" />
     <Content Include="Views\Expert\Index.cshtml" />
     <Content Include="Views\Client\Create.cshtml" />
-    <Content Include="Views\Client\Delete.cshtml" />
     <Content Include="Views\Client\Details.cshtml" />
-    <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
