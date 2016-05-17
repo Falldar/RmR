@@ -23,9 +23,9 @@ namespace RmR
 
             //DOuellette: Add Gmail
             //Credentials
-            var credentialUserName = "morningcoffeewot@gmail.com";
+            var credentialUserName = "daniel.bujold.0719@gmail.com";
             var sentFrom = "\"RmR.com\"<morningcoffeewot@gmail.com>";
-            var pwd = "****";
+            var pwd = "Emma2012!@#$";
 
             //Configure the client
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com");

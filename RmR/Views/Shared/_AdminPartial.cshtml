@@ -11,6 +11,7 @@
     }
     else if (User.IsInRole("expert"))
     {
-        <li>@Html.ActionLink("List of Resumes", "Index", "ExpertResume")</li>
+        <li>@Html.ActionLink("Current work", "Index", "ExpertResume")</li>
+        <li>@Html.ActionLink("Available work", "Index", "ExpertResume")</li>
     }
 }

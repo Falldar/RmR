@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RmR.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using RmR.DAL;
 
 namespace RmR.Controllers
 {
@@ -214,12 +215,14 @@ namespace RmR.Controllers
                     var roleStore = new RoleStore<IdentityRole>(context);
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-                    var userStore = new UserStore<ApplicationUser>(context);
-                    var userManager = new UserManager<ApplicationUser>(userStore);
-                    userManager.AddToRole(user.Id, "client");
+                   
 
                     if (result.Succeeded)
                     {
+                        var userStore = new UserStore<ApplicationUser>(context);
+                        var userManager = new UserManager<ApplicationUser>(userStore);
+                        userManager.AddToRole(user.Id, "client");
+
                         //DOuellette: Removing auto sign-in
                         //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
@@ -248,6 +251,7 @@ namespace RmR.Controllers
             {
                 return View("Error");
             }
+            ViewBag.UserID = userId;
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
@@ -461,6 +465,48 @@ namespace RmR.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
+
+        // GET: /Account/PersonalInfo
+        [AllowAnonymous]
+        public ActionResult PersonalInfo(string userId)
+        {
+            if(userId == null)
+            {
+                return HttpNotFound();
+            }
+            var context = new ApplicationDbContext();
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var user = userManager.FindById(userId);
+            ViewBag.Email = user.Email;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        public ActionResult PersonalInfo([Bind(Include = "FirstName,LastName,Email")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                ResumeContext db = new ResumeContext();
+                var Users = db.Users.Where(u => u.Email == user.Email).SingleOrDefault();
+                if (Users == null)
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("PersonalUpdated");
+
+        }
+        [AllowAnonymous]
+        // GET: Accounts/personalupdate
+        public ActionResult PersonalUpdated()
+        {
+            return View();
+        }
+
+
 
         //
         // GET: /Account/ExternalLoginFailure

@@ -61,10 +61,50 @@ namespace RmR.Migrations.IdentityMigrations
                     Email = "admin@rmr.com",
                     EmailConfirmed = true
                 };
+
+                userManager.Create(userToInsert, "Admin@123456");
+                
+                //assign admin user to admin role
+                userManager.AddToRole(userToInsert.Id, "admin");
+                
+            }
+            //5. add admin user and assign admin role
+            if ((!context.Users.Any(u => u.UserName == "client@rmr.com")))
+            {
+                //admin user does not exist - create it
+                var userStore = new UserStore<Models.ApplicationUser>(context);
+                var userManager = new UserManager<Models.ApplicationUser>(userStore);
+                var userToInsert = new Models.ApplicationUser
+                {
+                    UserName = "client@rmr.com",
+                    Email = "client@rmr.com",
+                    EmailConfirmed = true
+                };
+
                 userManager.Create(userToInsert, "Admin@123456");
 
                 //assign admin user to admin role
-                userManager.AddToRole(userToInsert.Id, "admin");
+                userManager.AddToRole(userToInsert.Id, "client");
+
+            }
+            //6. add admin user and assign admin role
+            if ((!context.Users.Any(u => u.UserName == "expert@rmr.com")))
+            {
+                //admin user does not exist - create it
+                var userStore = new UserStore<Models.ApplicationUser>(context);
+                var userManager = new UserManager<Models.ApplicationUser>(userStore);
+                var userToInsert = new Models.ApplicationUser
+                {
+                    UserName = "expert@rmr.com",
+                    Email = "expert@rmr.com",
+                    EmailConfirmed = true
+                };
+
+                userManager.Create(userToInsert, "Admin@123456");
+
+                //assign admin user to admin role
+                userManager.AddToRole(userToInsert.Id, "expert");
+
             }
 
         }

@@ -58,11 +58,11 @@ namespace RmR
             //   appId: "",
             //   appSecret: "");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "680574652057-8g77b2mtlnegrs0krjq66mhkel2eue7p.apps.googleusercontent.com",
-                ClientSecret = "POS7FbPOi5MV697RYFMl2-5o"
-            });
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "680574652057-8g77b2mtlnegrs0krjq66mhkel2eue7p.apps.googleusercontent.com",
+            //    ClientSecret = "POS7FbPOi5MV697RYFMl2-5o"
+            //});
         }
     }
 }
