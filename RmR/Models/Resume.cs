@@ -18,10 +18,11 @@ namespace RmR.Models
         [Required]
         [Display(Name = "Resume Name")]
         public string ResumeName { get; set; }
+        [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true)]
         [Display(Name = "Uploaded Date")]
-        public DateTime? CreatedOn { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime CreatedOn { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true)]
         [Display(Name = "Completed Date")]
