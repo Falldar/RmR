@@ -198,7 +198,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\ClientResumeController.cs" />
     <Compile Include="Controllers\ExpertController.cs" />
+    <Compile Include="Controllers\ExpertResumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
@@ -317,6 +319,16 @@
     <Content Include="Views\Client\Create.cshtml" />
     <Content Include="Views\Client\Details.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\ClientResume\Create.cshtml" />
+    <Content Include="Views\ClientResume\Delete.cshtml" />
+    <Content Include="Views\ClientResume\Details.cshtml" />
+    <Content Include="Views\ClientResume\Edit.cshtml" />
+    <Content Include="Views\ClientResume\Index.cshtml" />
+    <Content Include="Views\ExpertResume\Create.cshtml" />
+    <Content Include="Views\ExpertResume\Delete.cshtml" />
+    <Content Include="Views\ExpertResume\Details.cshtml" />
+    <Content Include="Views\ExpertResume\Edit.cshtml" />
+    <Content Include="Views\ExpertResume\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
