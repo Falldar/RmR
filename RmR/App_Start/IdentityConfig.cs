@@ -25,7 +25,7 @@ namespace RmR
             //Credentials
             var credentialUserName = "morningcoffeewot@gmail.com";
             var sentFrom = "\"RmR.com\"<morningcoffeewot@gmail.com>";
-            var pwd = "Kogibak12";
+            var pwd = "****";
 
             //Configure the client
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com");
