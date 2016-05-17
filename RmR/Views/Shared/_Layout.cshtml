@@ -19,7 +19,8 @@
     </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top"> @* navbar-inverse *@
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        @* navbar-inverse *@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,8 +30,8 @@
                 </button>
 
                 @*<a href="@Html.Action("Index", "Home", new { area = "" })">
-                    <img src="~/img/rmr.png" border="0" alt="Logo"  style="position:static" />
-                </a>*@
+                        <img src="~/img/rmr.png" border="0" alt="Logo"  style="position:static" />
+                    </a>*@
 
                 @*<a href="@Url.Action("Index", "Home")"><img src="~/img/rmr.png" id="fpLogo"/></a>*@
 
@@ -41,14 +42,14 @@
                         </div>
                     </div>*@
 
-                @Html.ActionLink("Rate my Resume", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Rate my Resume", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style="margin-left:200px"})
             </div>
-            
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     @Html.Partial("_AdminPartial")
                     <li>@Html.ActionLink("Quick Tools", "Quicktools", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>                    
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.Partial("_LoginPartial")</li>
                 </ul>
             </div>
@@ -56,8 +57,8 @@
     </div>
     <div class="container body-content" id="BodyContainer">
         @RenderBody()
-        <hr />
-        <footer>
+        <hr style="padding-bottom: 3rem"/>
+        <footer style="position: absolute; bottom: 0; padding-bottom: 1rem">
             <p>&copy; @DateTime.Now.Year - Rate my Resume</p>
         </footer>
     </div>
