@@ -17,7 +17,7 @@ namespace RmR.Models
         public int ResumeID { get; set; }
         [Required]
         [Display(Name="Resume Name")]
-        public int ResumeName { get; set; }
+        public string ResumeName { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Uploaded Date")]

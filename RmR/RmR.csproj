@@ -197,6 +197,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\ExpertController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
@@ -219,6 +221,10 @@
     <Compile Include="Migrations\ResumeMigrations\201605162312562_CompletedOn.cs" />
     <Compile Include="Migrations\ResumeMigrations\201605162312562_CompletedOn.Designer.cs">
       <DependentUpon>201605162312562_CompletedOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ResumeMigrations\201605162333389_ResumeName.cs" />
+    <Compile Include="Migrations\ResumeMigrations\201605162333389_ResumeName.Designer.cs">
+      <DependentUpon>201605162333389_ResumeName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ResumeMigrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -303,6 +309,16 @@
     <Content Include="Views\Resume\Details.cshtml" />
     <Content Include="Views\Resume\Edit.cshtml" />
     <Content Include="Views\Resume\Index.cshtml" />
+    <Content Include="Views\Expert\Create.cshtml" />
+    <Content Include="Views\Expert\Delete.cshtml" />
+    <Content Include="Views\Expert\Details.cshtml" />
+    <Content Include="Views\Expert\Edit.cshtml" />
+    <Content Include="Views\Expert\Index.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Client\Delete.cshtml" />
+    <Content Include="Views\Client\Details.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -328,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ResumeMigrations\201605162312562_CompletedOn.resx">
       <DependentUpon>201605162312562_CompletedOn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ResumeMigrations\201605162333389_ResumeName.resx">
+      <DependentUpon>201605162333389_ResumeName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

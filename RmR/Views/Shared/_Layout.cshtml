@@ -46,10 +46,9 @@
             
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    
-                    <li>@Html.ActionLink("Quick Tools", "Quicktools", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
                     @Html.Partial("_AdminPartial")
+                    <li>@Html.ActionLink("Quick Tools", "Quicktools", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>                    
                     <li>@Html.Partial("_LoginPartial")</li>
                 </ul>
             </div>
