@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using RmR.DAL;
 using RmR.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using RmR.ViewModels;
 
 namespace RmR.Controllers
 {
@@ -18,7 +21,31 @@ namespace RmR.Controllers
         // GET: ExpertResume
         public ActionResult Index()
         {
-            return View(db.Resumes.ToList());
+            string userId = User.Identity.GetUserId();
+            if (!string.IsNullOrEmpty(userId))
+            {
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ApplicationDbContext.Create()));
+                var currentExpert = manager.FindByEmail(User.Identity.GetUserName());
+
+                var viewModel = new ResumeExpertViewModel();
+                viewModel.Experts = db.Experts
+                    .Include(i => i.Resumes)
+                    .Where(i => i.Email == currentExpert.Email);
+
+                var expert = viewModel.Experts
+                    .Where(i => i.Email == currentExpert.Email).Single();
+
+                viewModel.Resumes = viewModel.Experts
+                    .Where(i => i.ID == expert.ID).Single().Resumes;
+            
+                
+                return View(viewModel);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            
         }
 
         // GET: ExpertResume/Details/5

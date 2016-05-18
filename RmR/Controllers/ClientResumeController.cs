@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using RmR.DAL;
 using RmR.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using RmR.ViewModels;
 
 namespace RmR.Controllers
 {
@@ -18,7 +21,8 @@ namespace RmR.Controllers
         // GET: ClientResume
         public ActionResult Index()
         {
-            return View(db.Resumes.ToList());
+            return View();
+                
         }
 
         // GET: ClientResume/Details/5
