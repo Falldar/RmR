@@ -28,7 +28,7 @@ namespace RmR.Models
         [Display(Name = "Completed Date")]
         public DateTime? CompletedOn { get; set; }
         public Status Status { get; set; }
-        [DisplayFormat(NullDisplayText ="No Description")]
+        [DisplayFormat(NullDisplayText = "No Description")]
         public string Description { get; set; }
         public virtual Expert Expert { get; set; }
         public virtual Client Client { get; set; }
