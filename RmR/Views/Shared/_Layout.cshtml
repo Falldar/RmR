@@ -42,7 +42,7 @@
                         </div>
                     </div>*@
 
-                @Html.ActionLink("Rate my Resume", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style="margin-left:200px"})
+                @Html.ActionLink("Rate my Resume", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"@*, @style="margin-left:200px"*@})
             </div>
 
             <div class="navbar-collapse collapse">
@@ -57,8 +57,8 @@
     </div>
     <div class="container body-content" id="BodyContainer">
         @RenderBody()
-        <hr style="padding-bottom: 3rem"/>
-        <footer style="position: absolute; bottom: 0; padding-bottom: 1rem">
+        <hr />
+        <footer @*style="position: absolute; bottom: 0; padding-top: 3rem; padding-bottom: 1rem"*@>
             <p>&copy; @DateTime.Now.Year - Rate my Resume</p>
         </footer>
     </div>
