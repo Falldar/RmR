@@ -243,3 +243,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/RmR/Properties/PublishProfiles/rmr.danbujold.com - Web Deploy.pubxml

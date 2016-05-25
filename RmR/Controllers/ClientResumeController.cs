@@ -21,8 +21,30 @@ namespace RmR.Controllers
         // GET: ClientResume
         public ActionResult Index()
         {
-            return View();
-                
+            //return View();
+            string userId = User.Identity.GetUserId();
+            if (!string.IsNullOrEmpty(userId))
+            {
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ApplicationDbContext.Create()));
+                var currentClient = manager.FindByEmail(User.Identity.GetUserName());
+
+
+
+                Client client = db.Clients                    
+                    .Where(i => i.Email == currentClient.Email).Single();
+
+                var resumes = db.Resumes.Where(i => i.ClientID == client.ID).ToList();
+
+
+
+                return View(resumes);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+
+
         }
 
         // GET: ClientResume/Details/5
@@ -51,11 +73,21 @@ namespace RmR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ResumeName,Description")] Resume resume)
+        public ActionResult Create([Bind(Include = "ResumeName,Description")] Resume resume, HttpPostedFileBase FileName)
         {
             if (ModelState.IsValid)
             {
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ApplicationDbContext.Create()));
+                var currentClient = manager.FindByEmail(User.Identity.GetUserName());
+
+                Client client = db.Clients
+                    .Include(r=>r.Resumes)
+                    .Where(i => i.Email == currentClient.Email).Single();
+
+
+                resume.ClientID = client.ID;
                 resume.CreatedOn = DateTime.Now;
+                resume.ExpertID = null;
                 db.Resumes.Add(resume);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -63,7 +95,7 @@ namespace RmR.Controllers
 
             return View(resume);
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

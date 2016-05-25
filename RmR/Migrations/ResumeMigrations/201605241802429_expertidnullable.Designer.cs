@@ -7,13 +7,13 @@ namespace RmR.Migrations.ResumeMigrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class NullsOnDateResume21 : IMigrationMetadata
+    public sealed partial class expertidnullable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NullsOnDateResume21));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(expertidnullable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605170143540_NullsOnDateResume21"; }
+            get { return "201605241802429_expertidnullable"; }
         }
         
         string IMigrationMetadata.Source

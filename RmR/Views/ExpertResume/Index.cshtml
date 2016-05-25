@@ -17,7 +17,7 @@
             <td>
                 @foreach (var name in item.Resumes)
                 {
-                    @Html.ActionLink(name.ResumeName, "Index")
+                    @Html.ActionLink(name.ResumeName, "Details", new { id = name.ResumeID })
                     <br />
                 }
             </td>

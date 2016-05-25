@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "ClientResume", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Resume</h4>
         <hr />
@@ -23,13 +23,22 @@
             </div>
         </div>
 
-     <div class="form-group">
+        <div class="form-group">
+            <label class="control-label col-md-2" for="FileName">File</label>
+            <div class="col-md-10">
+                <input type="file" id="FileName" name="FileName" accept="file/*" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <textarea rows="4" cols="50" name="description" placeholder="Enter brief description here..."></textarea>
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
+
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

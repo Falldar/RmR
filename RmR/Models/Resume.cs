@@ -30,6 +30,8 @@ namespace RmR.Models
         public Status Status { get; set; }
         [DisplayFormat(NullDisplayText = "No Description")]
         public string Description { get; set; }
+        public int ClientID { get; set; }
+        public int? ExpertID { get; set; }
         public virtual Expert Expert { get; set; }
         public virtual Client Client { get; set; }
     }

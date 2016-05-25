@@ -3,7 +3,7 @@ namespace RmR.Migrations.ResumeMigrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -24,27 +24,28 @@ namespace RmR.Migrations.ResumeMigrations
                 c => new
                     {
                         ResumeID = c.Int(nullable: false, identity: true),
-                        ResumeName = c.Int(nullable: false),
+                        ResumeName = c.String(nullable: false),
                         CreatedOn = c.DateTime(nullable: false),
+                        CompletedOn = c.DateTime(),
                         Status = c.Int(nullable: false),
                         Description = c.String(),
-                        Client_ID = c.Int(),
-                        Expert_ID = c.Int(),
+                        ClientID = c.Int(nullable: false),
+                        ExpertID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ResumeID)
-                .ForeignKey("dbo.Users", t => t.Client_ID)
-                .ForeignKey("dbo.Users", t => t.Expert_ID)
-                .Index(t => t.Client_ID)
-                .Index(t => t.Expert_ID);
+                .ForeignKey("dbo.Users", t => t.ClientID, cascadeDelete: false)
+                .ForeignKey("dbo.Users", t => t.ExpertID, cascadeDelete: false)
+                .Index(t => t.ClientID)
+                .Index(t => t.ExpertID);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Resumes", "Expert_ID", "dbo.Users");
-            DropForeignKey("dbo.Resumes", "Client_ID", "dbo.Users");
-            DropIndex("dbo.Resumes", new[] { "Expert_ID" });
-            DropIndex("dbo.Resumes", new[] { "Client_ID" });
+            DropForeignKey("dbo.Resumes", "ExpertID", "dbo.Users");
+            DropForeignKey("dbo.Resumes", "ClientID", "dbo.Users");
+            DropIndex("dbo.Resumes", new[] { "ExpertID" });
+            DropIndex("dbo.Resumes", new[] { "ClientID" });
             DropTable("dbo.Resumes");
             DropTable("dbo.Users");
         }
