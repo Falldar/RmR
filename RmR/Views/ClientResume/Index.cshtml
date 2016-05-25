@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<RmR.Models.Resume>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Your Resumes";
 }
 
-<h2>Index</h2>
+<h2>Your Resumes</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -48,7 +48,7 @@
                         @Html.ActionLink("On Review", "Edit", new { id = item.ResumeID }, new { @class = "btn btn-warning disabled" })
                         break;
                     case (2):
-                        @Html.ActionLink("Completed", "Edit", new { id = item.ResumeID }, new { @class = "btn btn-default disabled" })
+                        @Html.ActionLink("Completed", "downloadFile", new { id = item.ResumeID }, new { @class = "btn btn-default" })
                         break;
                     default:
                         break;

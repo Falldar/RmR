@@ -11,9 +11,11 @@ using RmR.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RmR.ViewModels;
+using RmR.Helpers;
 
 namespace RmR.Controllers
 {
+    [Authorize(Roles = "client")]
     public class ClientResumeController : Controller
     {
         private ResumeContext db = new ResumeContext();
@@ -21,7 +23,7 @@ namespace RmR.Controllers
         // GET: ClientResume
         public ActionResult Index()
         {
-            //return View();
+
             string userId = User.Identity.GetUserId();
             if (!string.IsNullOrEmpty(userId))
             {
@@ -80,20 +82,62 @@ namespace RmR.Controllers
                 var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ApplicationDbContext.Create()));
                 var currentClient = manager.FindByEmail(User.Identity.GetUserName());
 
-                Client client = db.Clients
-                    .Include(r=>r.Resumes)
+                if(FileName !=null && FileName.ContentLength > 0)
+                {
+                    var validFileType = new string[]
+                    {
+                        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    };
+
+                    if (!validFileType.Contains(FileName.ContentType))
+                    {
+                        //file being upload in not pgn - display error
+                        ModelState.AddModelError("", "Please choose a DOCX file to upload.");
+                        return View(resume);
+                    }
+
+                    Client client = db.Clients
+                    .Include(r => r.Resumes)
                     .Where(i => i.Email == currentClient.Email).Single();
 
+                    resume.CreatedOn = DateTime.Now;
+                    resume.ClientID = client.ID;
+                    resume.ExpertID = null;
+                    db.Resumes.Add(resume);
+                    db.SaveChanges();
+                    string resumeName = resume.ResumeID + resume.ResumeName + DateTime.Now.ToString("MMddyyyy");
 
-                resume.ClientID = client.ID;
-                resume.CreatedOn = DateTime.Now;
-                resume.ExpertID = null;
-                db.Resumes.Add(resume);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    //Rename, upload file
+                    FileUploads fileUpload = new FileUploads();
+                    FileResults fileResult = fileUpload.RenameUploadFile(FileName, resumeName);
+
+
+                   
+                    
+
+
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    //nothing to upload - display error
+                    ModelState.AddModelError("", "You have not added a Resume file to upload");
+                    return View(resume);
+
+                }
+
+
+                
             }
 
             return View(resume);
+        }
+
+        public FileResult downloadFile(int ID)
+        {
+            Resume resume = db.Resumes.Find(ID);
+            return new FilePathResult("~\\ResumeFile\\" + resume.ResumeID + resume.ResumeName + ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
         }
 
         protected override void Dispose(bool disposing)

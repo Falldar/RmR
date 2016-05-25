@@ -11,6 +11,7 @@ using RmR.Models;
 
 namespace RmR.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ResumeController : Controller
     {
         private ResumeContext db = new ResumeContext();

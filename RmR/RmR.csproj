@@ -312,6 +312,7 @@
     <Content Include="Views\ExpertResume\Index.cshtml" />
     <Content Include="Views\Account\PersonalInfo.cshtml" />
     <Content Include="Views\Account\PersonalUpdated.cshtml" />
+    <Content Include="Views\ExpertResume\Work.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

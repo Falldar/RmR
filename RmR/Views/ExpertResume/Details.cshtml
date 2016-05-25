@@ -11,12 +11,22 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Client.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.FullName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.ResumeName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ResumeName)
         </dd>
+
+
 
         <dt>
             @Html.DisplayNameFor(model => model.CreatedOn)
@@ -37,11 +47,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Status)
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -49,9 +54,28 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
+        <dd>
+            @switch ((int)Model.Status)
+            {
+                case (0):
+                    @Html.ActionLink("Download Resume", "downloadFile", new { id = Model.ResumeID }, new { @class = "btn btn-sm btn-primary" })
+                    break;
+                case (1):
+                    @Html.ActionLink("Upload Completed Resume", "Edit", new { id = Model.ResumeID }, new { @class = "btn btn-sm btn-warning" })
+                    break;
+                case (2):
+                    @Html.ActionLink("Completed", "Edit", new { id = Model.ResumeID }, new { @class = "btn btn-sm btn-default disabled" })
+                    break;
+                default:
+                    break;
+            }
+        </dd>
+
+        
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Current Work", "Index", null, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to Available Work", "Work", null, new { @class = "btn btn-primary" })
 </p>

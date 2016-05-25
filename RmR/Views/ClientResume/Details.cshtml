@@ -1,7 +1,7 @@
 ﻿@model RmR.Models.Resume
 
 @{
-    ViewBag.Title = Model.ResumeName + " Details";
+    ViewBag.Title = Model.ResumeName + " details";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -16,6 +16,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.ResumeName)
+        </dd>
+
+        <dt>
+            Assigned Expert
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expert.FullName)
         </dd>
 
         <dt>
@@ -34,13 +42,7 @@
             @Html.DisplayFor(model => model.CompletedOn)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.Description)
@@ -49,7 +51,26 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
 
+        <dd>
+            @switch ((int)Model.Status)
+            {
+                case (0):
+                    @Html.ActionLink("Submitted", "Edit", new { id = Model.ResumeID }, new { @class = "btn btn-sm btn-primary disabled" })
+                    break;
+                case (1):
+                    @Html.ActionLink("On Review", "Edit", new { id = Model.ResumeID }, new { @class = "btn btn-sm btn-warning disabled" })
+                    break;
+                case (2):
+                    @Html.ActionLink("Download Completed Resume", "downloadFile", new { id = Model.ResumeID }, new { @class = "btn btn-sm btn-default " })
+                    break;
+                default:
+                    break;
+            }
+        </dd>
     </dl>
 </div>
 <p>

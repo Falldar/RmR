@@ -1,24 +1,52 @@
-﻿@model RmR.ViewModels.ResumeExpertViewModel
-
+﻿@model IEnumerable<RmR.Models.Resume>
 @{
-    ViewBag.Title = "List of Resumes";
+    ViewBag.Title = "Current work";
 }
 
 <h2>@ViewBag.Title</h2>
 
 <table class="table table-striped">
     <tr>
-        <th> Current Resume</th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResumeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
     </tr>
 
-    @foreach (var item in Model.Experts)
+    @foreach (var item in Model)
     {
         <tr>
             <td>
-                @foreach (var name in item.Resumes)
+                <strong>@Html.ActionLink(item.ResumeName, "Details", new { id = item.ResumeID })</strong>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedOn)
+            </td>
+            <td>
+                @switch ((int)item.Status)
                 {
-                    @Html.ActionLink(name.ResumeName, "Details", new { id = name.ResumeID })
-                    <br />
+                    case (0):
+                        @Html.ActionLink("Submitted", "Edit", new { id = item.ResumeID }, new { @class = "btn btn-primary disabled" })
+                        break;
+                    case (1):
+                        @Html.ActionLink("Being Reviewed", "Details", new { id = item.ResumeID }, new { @class = "btn btn-warning" })
+                        break;
+                    case (2):
+                        @Html.ActionLink("Completed", "Edit", new { id = item.ResumeID }, new { @class = "btn btn-default disabled" })
+                        break;
+                    default:
+                        break;
                 }
             </td>
         </tr>
